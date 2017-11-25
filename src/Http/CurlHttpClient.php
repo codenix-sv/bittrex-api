@@ -4,6 +4,10 @@ namespace codenixsv\Bittrex\Http;
 
 use codenixsv\Bittrex\Exceptions\CurlException;
 
+/**
+ * Class CurlHttpClient
+ * @package codenixsv\Bittrex\Http
+ */
 class CurlHttpClient implements HttpClient
 {
     /**
@@ -12,7 +16,7 @@ class CurlHttpClient implements HttpClient
      * @return mixed
      * @throws CurlException
      */
-    public function get($url, $headers = [])
+    public function get($url, array $headers = [])
     {
         $ch = curl_init($url);
         if (!empty($headers)) {
@@ -33,7 +37,7 @@ class CurlHttpClient implements HttpClient
      * @return mixed
      * @throws CurlException
      */
-    public function post($url, $parameters = [], $headers = [])
+    public function post($url, array $parameters = [], array $headers = [])
     {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

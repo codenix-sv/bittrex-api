@@ -4,21 +4,32 @@ namespace codenixsv\Bittrex;
 
 use codenixsv\Bittrex\Http\HttpClient;
 
+/**
+ * Class BittrexClient
+ * @package codenixsv\Bittrex
+ */
 class BittrexClient extends Client
 {
     const API_URL = 'https://bittrex.com/api/';
     const API_VERSION = 'v1.1';
 
+    /**
+     * @var string
+     */
     private $key;
+
+    /**
+     * @var string
+     */
     private $secret;
 
     /**
      * BittrexClient constructor.
-     * @param $key
-     * @param $secret
+     * @param string $key
+     * @param string $secret
      * @param HttpClient $httpClient
      */
-    public function __construct($key, $secret, HttpClient $httpClient)
+    public function __construct(string $key, string $secret, HttpClient $httpClient)
     {
         parent::__construct($httpClient);
         $this->key = $key;
@@ -26,11 +37,11 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param $path
+     * @param string $path
      * @param array $parameters
      * @return string
      */
-    private function generatePublicUrl($path, $parameters = [])
+    private function generatePublicUrl(string $path, array $parameters = []): string
     {
         return $this->getBaseUrl() . $path . '?' . http_build_query($parameters);
     }
@@ -40,7 +51,7 @@ class BittrexClient extends Client
      * @param array $parameters
      * @return mixed
      */
-    private function publicCall($path, $parameters = [])
+    private function publicCall(string $path, array $parameters = [])
     {
         $url = $this->generatePublicUrl($path, $parameters);
         return $this->httpClient->get($url);
@@ -51,7 +62,7 @@ class BittrexClient extends Client
      * @param array $parameters
      * @return mixed
      */
-    private function credentialCall($path, $parameters = [])
+    private function credentialCall(string $path, array $parameters = [])
     {
         $url = $this->generateCredentialUrl($path, $parameters);
         $headers['apisign'] = $this->generateSign($url);
@@ -59,11 +70,11 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param $path
+     * @param string $path
      * @param array $parameters
      * @return string
      */
-    private function generateCredentialUrl($path, $parameters = [])
+    private function generateCredentialUrl(string $path, array $parameters = []): string
     {
         $parameters['apikey'] = $this->key;
         $parameters['nonce'] = time();
@@ -72,10 +83,10 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param $url
+     * @param string $url
      * @return string
      */
-    private function generateSign($url)
+    private function generateSign(string $url): string
     {
         $sign = hash_hmac('sha512', $url, $this->secret);
         return $sign;
@@ -84,7 +95,7 @@ class BittrexClient extends Client
     /**
      * @return string
      */
-    public function getBaseUrl()
+    public function getBaseUrl(): string
     {
         return static::API_URL . static::API_VERSION;
     }
@@ -109,7 +120,7 @@ class BittrexClient extends Client
      * @param string $market
      * @return mixed
      */
-    public function getTicker($market = 'BTC-LTC')
+    public function getTicker(string $market = 'BTC-LTC')
     {
         $parameters['market'] = $market;
         return $this->publicCall('/public/getticker', $parameters);
@@ -127,7 +138,7 @@ class BittrexClient extends Client
      * @param string $market
      * @return mixed
      */
-    public function getMarketSummary($market = 'BTC-LTC')
+    public function getMarketSummary(string $market = 'BTC-LTC')
     {
         $parameters['market'] = $market;
         return $this->publicCall('/public/getmarketsummary', $parameters);
@@ -138,7 +149,7 @@ class BittrexClient extends Client
      * @param string $type
      * @return mixed
      */
-    public function getOrderBook($market = 'BTC-LTC', $type = 'both')
+    public function getOrderBook(string $market = 'BTC-LTC', $type = 'both')
     {
         $parameters['market'] = $market;
         $parameters['type'] = $type;
@@ -150,7 +161,7 @@ class BittrexClient extends Client
      * @param string $market
      * @return mixed
      */
-    public function getMarketHistory($market = 'BTC-LTC')
+    public function getMarketHistory(string $market = 'BTC-LTC')
     {
         $parameters['market'] = $market;
         return $this->publicCall('/public/getmarkethistory', $parameters);

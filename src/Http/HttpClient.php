@@ -2,6 +2,10 @@
 
 namespace codenixsv\Bittrex\Http;
 
+/**
+ * Interface HttpClient
+ * @package codenixsv\Bittrex\Http
+ */
 interface HttpClient
 {
     /**
@@ -9,7 +13,7 @@ interface HttpClient
      * @param array $headers
      * @return mixed
      */
-    public function get($url, $headers = []);
+    public function get($url, array $headers = []);
 
     /**
      * @param $url
@@ -17,5 +21,5 @@ interface HttpClient
      * @param array $headers
      * @return mixed
      */
-    public function post($url, $parameters = [], $headers = []);
+    public function post($url, array $parameters = [], array $headers = []);
 }

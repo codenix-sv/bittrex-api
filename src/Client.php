@@ -4,6 +4,10 @@ namespace codenixsv\Bittrex;
 
 use codenixsv\Bittrex\Http\HttpClient;
 
+/**
+ * Class Client
+ * @package codenixsv\Bittrex
+ */
 class Client
 {
     /**
@@ -21,11 +25,11 @@ class Client
     }
 
     /**
-     * @param $url
+     * @param string $url
      * @param array $headers
      * @return mixed
      */
-    public function get($url, $headers = [])
+    public function get(string $url, array $headers = [])
     {
 
         $response = $this->httpClient->get($url, $headers);
@@ -34,12 +38,12 @@ class Client
     }
 
     /**
-     * @param $url
+     * @param string $url
      * @param array $parameters
      * @param array $headers
      * @return mixed
      */
-    public function post($url, $parameters = [], $headers = [])
+    public function post(string $url, array $parameters = [], array $headers = [])
     {
         $response = $this->httpClient->post($url, $parameters, $headers);
 
