@@ -1,0 +1,39 @@
+{
+    "name": "codenix-sv/bittrex-api",
+    "description": "PHP client for the Bittrex API",
+    "keywords": [
+            "bittrex",
+            "bitcoin",
+            "btc",
+            "bittrex-api"
+        ],
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "support": {
+            "issues": "https://github.com/codenix-sv/bittrex-api/issues?state=open",
+            "source": "https://github.com/codenix-sv/bittrex-api"
+        },
+    "authors": [
+        {
+            "name": "Vladymyr Svyryd",
+            "email": "codenix.sv@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "codenixsv\\Bittrex\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "codenixsv\\Bittrex\\": "tests/"
+        }
+    }
+}
