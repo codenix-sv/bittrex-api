@@ -1,8 +1,9 @@
 <?php
 
-namespace codenixsv\Bittrex;
+namespace codenixsv\Bittrex\Clients;
 
 use codenixsv\Bittrex\Http\HttpClient;
+use codenixsv\Bittrex\Requests\Request;
 
 /**
  * Class Client
@@ -25,27 +26,23 @@ class Client
     }
 
     /**
-     * @param string $url
-     * @param array $headers
+     * @param Request $request
      * @return mixed
      */
-    public function get(string $url, array $headers = [])
+    public function get(Request $request)
     {
-
-        $response = $this->httpClient->get($url, $headers);
+        $response = $this->httpClient->get($request->getUrl(), $request->getHeaders());
 
         return $response;
     }
 
     /**
-     * @param string $url
-     * @param array $parameters
-     * @param array $headers
+     * @param Request $request
      * @return mixed
      */
-    public function post(string $url, array $parameters = [], array $headers = [])
+    public function post(Request $request)
     {
-        $response = $this->httpClient->post($url, $parameters, $headers);
+        $response = $this->httpClient->post($request->getUrl(), $request->getParameters(), $request->getHeaders());
 
         return $response;
     }
