@@ -1,6 +1,6 @@
 <?php
 
-namespace codenixsv\Bittrex\tests\unit\Requests\Managers;
+namespace codenixsv\Bittrex\tests\Requests\Managers;
 
 use codenixsv\Bittrex\Requests\Managers\PrivateBittrexRequestManager;
 use PHPUnit\Framework\TestCase;
