@@ -53,6 +53,7 @@ class PrivateBittrexRequestManager extends BittrexRequestManager
     {
         $url = $this->generateUrlForGetRequest($path, $parameters);
         $headers['apisign'] = $this->generateSign($url);
+        $parameters['apikey'] = $this->key;
 
         return new BittrexRequest($url, $headers, $parameters);
     }
