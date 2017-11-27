@@ -38,6 +38,10 @@ class BittrexClient extends Client
         $this->privateRequestManager = $privateRequestManager;
     }
 
+    /*
+     ***************************  Public API  **************************
+     */
+
     /**
      * @return mixed
      */
@@ -117,6 +121,117 @@ class BittrexClient extends Client
         $parameters['market'] = $market;
 
         $request = $this->publicRequestManager->createGetRequest('/public/getmarkethistory', $parameters);
+
+        return $this->get($request);
+    }
+
+    /*
+     ***************************  Account API  **************************
+     */
+
+    /**
+     * @return mixed
+     */
+    public function getBalances()
+    {
+        $request = $this->privateRequestManager->createGetRequest('/account/getbalances');
+
+        return $this->get($request);
+    }
+
+    /**
+     * @param string $currency
+     * @return mixed
+     */
+    public function getBalance(string $currency = 'BTC')
+    {
+        $parameters['currency'] = $currency;
+
+        $request = $this->privateRequestManager->createGetRequest('/account/getbalance');
+
+        return $this->get($request);
+    }
+
+    /**
+     * @param string $currency
+     * @return mixed
+     */
+    public function getDepositAddress(string $currency = 'BTC')
+    {
+        $parameters['currency'] = $currency;
+
+        $request = $this->privateRequestManager->createGetRequest('/account/getdepositaddress');
+
+        return $this->get($request);
+    }
+
+    /**
+     * @param string $currency
+     * @param float $quantity
+     * @param string $address
+     * @param string $paymentid
+     * @return mixed
+     */
+    public function withdraw(string $currency, float $quantity, string $address, string $paymentid)
+    {
+        $parameters['currency'] = $currency;
+        $parameters['quantity'] = (string)$quantity;
+        $parameters['address'] = $address;
+        $parameters['paymentid'] = $paymentid;
+
+        $request = $this->privateRequestManager->createGetRequest('/account/withdraw');
+
+        return $this->get($request);
+    }
+
+    /**
+     * @param string $uuid
+     * @return mixed
+     */
+    public function getOrder(string $uuid)
+    {
+        $parameters['uuid'] = $uuid;
+
+        $request = $this->privateRequestManager->createGetRequest('/account/getorder');
+
+        return $this->get($request);
+    }
+
+    /**
+     * @param string $market
+     * @return mixed
+     */
+    public function getOrderHistory(string $market = 'BTC-LTC')
+    {
+        $parameters['market'] = $market;
+
+        $request = $this->privateRequestManager->createGetRequest('/account/getorderhistory');
+
+        return $this->get($request);
+    }
+
+    /**
+     * @param string $currency
+     * @return mixed
+     */
+    public function getWithdrawalHistory(string $currency = 'BTC')
+    {
+        $parameters['currency'] = $currency;
+
+        $request = $this->privateRequestManager->createGetRequest('/account/getwithdrawalhistory');
+
+        return $this->get($request);
+    }
+
+    /**
+     * @param string $currency
+     * @return mixed
+     */
+    public function getDepositHistory(string $currency = 'BTC')
+    {
+        $parameters['currency'] = $currency;
+
+        $request = $this->privateRequestManager->createGetRequest('/account/getdeposithistory');
 
         return $this->get($request);
     }
