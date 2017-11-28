@@ -43,6 +43,8 @@ class BittrexClient extends Client
      */
 
     /**
+     * Get the open and available trading markets
+     *
      * @return mixed
      */
     public function getMarkets()
@@ -53,6 +55,8 @@ class BittrexClient extends Client
     }
 
     /**
+     * Get all supported currencies
+     *
      * @return mixed
      */
     public function getCurrencies()
@@ -63,7 +67,9 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param string $market
+     * Get the current tick values for a market
+     *
+     * @param string $market string literal for the market (e.g.: BTC-LTC)
      * @return mixed
      */
     public function getTicker(string $market)
@@ -76,6 +82,8 @@ class BittrexClient extends Client
     }
 
     /**
+     * Get the last 24 hour summary of all active exchanges
+     *
      * @return mixed
      */
     public function getMarketSummaries()
@@ -86,7 +94,9 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param string $market
+     * Get the last 24 hour summary of all active exchanges for a market
+     *
+     * @param string $market string literal for the market (e.g.: BTC-LTC)
      * @return mixed
      */
     public function getMarketSummary(string $market)
@@ -98,8 +108,10 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param string $market
-     * @param string $type
+     * Get the orderbook for a given market
+     *
+     * @param string $market string literal for the market (e.g.: BTC-LTC)
+     * @param string $type 'buy', 'sell' or 'both' to identify the type of orderbook to return
      * @return mixed
      */
     public function getOrderBook(string $market, $type = 'both')
@@ -113,7 +125,9 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param string $market
+     * Get latest trades that have occured for a specific market
+     *
+     * @param string $market string literal for the market (e.g.: BTC-LTC)
      * @return mixed
      */
     public function getMarketHistory(string $market)
@@ -130,9 +144,11 @@ class BittrexClient extends Client
      */
 
     /**
-     * @param string $market
-     * @param float $quantity
-     * @param float $rate
+     * Place a buy order in a specific market
+     *
+     * @param string $market string literal for the market (e.g.: BTC-LTC)
+     * @param float $quantity amount to purchase
+     * @param float $rate rate at which to place the order
      * @return mixed
      */
     public function buyLimit(string $market, float $quantity, float $rate)
@@ -147,9 +163,11 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param string $market
-     * @param float $quantity
-     * @param float $rate
+     * Place an sell order in a specific market
+     *
+     * @param string $market string literal for the market (e.g.: BTC-LTC)
+     * @param float $quantity mount to purchase
+     * @param float $rate rate at which to place the order
      * @return mixed
      */
     public function sellLimit(string $market, float $quantity, float $rate)
@@ -164,7 +182,10 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param string $uuid
+     * Cancel a buy or sell order
+     *
+     * @param string $uuid uuid of buy or sell order
+
      * @return mixed
      */
     public function cancel(string $uuid)
@@ -178,7 +199,9 @@ class BittrexClient extends Client
 
 
     /**
-     * @param string $market
+     * Get all orders that you currently have opened
+     *
+     * @param string $market string literal for the market (e.g.: BTC-LTC)
      * @return mixed
      */
     public function getOpenOrders(string $market)
@@ -195,6 +218,8 @@ class BittrexClient extends Client
      */
 
     /**
+     * Get all balances from your account
+     *
      * @return mixed
      */
     public function getBalances()
@@ -205,7 +230,9 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param string $currency
+     * Get balance from your account for a specific currency
+     *
+     * @param string $currency string literal for the currency (e.g.: BTC)
      * @return mixed
      */
     public function getBalance(string $currency)
@@ -218,7 +245,9 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param string $currency
+     * Get or generate an address for a specific currency
+     *
+     * @param string $currency string literal for the currency (e.g.: BTC)
      * @return mixed
      */
     public function getDepositAddress(string $currency)
@@ -231,10 +260,13 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param string $currency
-     * @param float $quantity
-     * @param string $address
-     * @param string $paymentid
+     * Withdraw funds from your account. note: please account for txfee
+     *
+     * @param string $currency string literal for the currency (e.g.: BTC)
+     * @param float $quantity quantity of coins to withdraw
+     * @param string $address address where to send the funds
+     * @param string $paymentid used for CryptoNotes/BitShareX/Nxt optional field (memo/paymentid)
+
      * @return mixed
      */
     public function withdraw(string $currency, float $quantity, string $address, string $paymentid)
@@ -250,7 +282,9 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param string $uuid
+     * Get a single order by uuid
+     *
+     * @param string $uuid uuid of the buy or sell order
      * @return mixed
      */
     public function getOrder(string $uuid)
@@ -263,7 +297,9 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param string $market
+     * Get our order history
+     *
+     * @param string $market string literal for the market (e.g.: BTC-LTC)
      * @return mixed
      */
     public function getOrderHistory(string $market)
@@ -276,7 +312,9 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param string $currency
+     * Get your withdrawal history
+     *
+     * @param string $currency string literal for the currency (e.g.: BTC)
      * @return mixed
      */
     public function getWithdrawalHistory(string $currency)
@@ -289,7 +327,9 @@ class BittrexClient extends Client
     }
 
     /**
-     * @param string $currency
+     * Get your deposit history
+     *
+     * @param string $currency string literal for the currency (e.g.: BTC)
      * @return mixed
      */
     public function getDepositHistory(string $currency)
