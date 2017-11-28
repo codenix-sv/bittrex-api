@@ -66,7 +66,7 @@ class BittrexClient extends Client
      * @param string $market
      * @return mixed
      */
-    public function getTicker(string $market = 'BTC-LTC')
+    public function getTicker(string $market)
     {
         $parameters['market'] = $market;
 
@@ -89,7 +89,7 @@ class BittrexClient extends Client
      * @param string $market
      * @return mixed
      */
-    public function getMarketSummary(string $market = 'BTC-LTC')
+    public function getMarketSummary(string $market)
     {
         $parameters['market'] = $market;
         $request = $this->publicRequestManager->createGetRequest('/public/getmarketsummary', $parameters);
@@ -102,7 +102,7 @@ class BittrexClient extends Client
      * @param string $type
      * @return mixed
      */
-    public function getOrderBook(string $market = 'BTC-LTC', $type = 'both')
+    public function getOrderBook(string $market, $type = 'both')
     {
         $parameters['market'] = $market;
         $parameters['type'] = $type;
@@ -116,7 +116,7 @@ class BittrexClient extends Client
      * @param string $market
      * @return mixed
      */
-    public function getMarketHistory(string $market = 'BTC-LTC')
+    public function getMarketHistory(string $market)
     {
         $parameters['market'] = $market;
 
@@ -181,7 +181,7 @@ class BittrexClient extends Client
      * @param string $market
      * @return mixed
      */
-    public function getOpenOrders(string $market = 'BTC-LTC')
+    public function getOpenOrders(string $market)
     {
         $parameters['market'] = $market;
 
@@ -208,7 +208,7 @@ class BittrexClient extends Client
      * @param string $currency
      * @return mixed
      */
-    public function getBalance(string $currency = 'BTC')
+    public function getBalance(string $currency)
     {
         $parameters['currency'] = $currency;
 
@@ -221,7 +221,7 @@ class BittrexClient extends Client
      * @param string $currency
      * @return mixed
      */
-    public function getDepositAddress(string $currency = 'BTC')
+    public function getDepositAddress(string $currency)
     {
         $parameters['currency'] = $currency;
 
@@ -266,7 +266,7 @@ class BittrexClient extends Client
      * @param string $market
      * @return mixed
      */
-    public function getOrderHistory(string $market = 'BTC-LTC')
+    public function getOrderHistory(string $market)
     {
         $parameters['market'] = $market;
 
@@ -279,7 +279,7 @@ class BittrexClient extends Client
      * @param string $currency
      * @return mixed
      */
-    public function getWithdrawalHistory(string $currency = 'BTC')
+    public function getWithdrawalHistory(string $currency)
     {
         $parameters['currency'] = $currency;
 
@@ -292,7 +292,7 @@ class BittrexClient extends Client
      * @param string $currency
      * @return mixed
      */
-    public function getDepositHistory(string $currency = 'BTC')
+    public function getDepositHistory(string $currency)
     {
         $parameters['currency'] = $currency;
 
