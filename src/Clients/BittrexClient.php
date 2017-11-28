@@ -126,6 +126,71 @@ class BittrexClient extends Client
     }
 
     /*
+     ***************************  Market API  **************************
+     */
+
+    /**
+     * @param string $market
+     * @param float $quantity
+     * @param float $rate
+     * @return mixed
+     */
+    public function buyLimit(string $market, float $quantity, float $rate)
+    {
+        $parameters['market'] = $market;
+        $parameters['quantity'] = (string)$quantity;
+        $parameters['rate'] = (string)$rate;
+
+        $request = $this->privateRequestManager->createGetRequest('/market/buylimit');
+
+        return $this->get($request);
+    }
+
+    /**
+     * @param string $market
+     * @param float $quantity
+     * @param float $rate
+     * @return mixed
+     */
+    public function sellLimit(string $market, float $quantity, float $rate)
+    {
+        $parameters['market'] = $market;
+        $parameters['quantity'] = (string)$quantity;
+        $parameters['rate'] = (string)$rate;
+
+        $request = $this->privateRequestManager->createGetRequest('/market/selllimit');
+
+        return $this->get($request);
+    }
+
+    /**
+     * @param string $uuid
+     * @return mixed
+     */
+    public function cancel(string $uuid)
+    {
+        $parameters['uuid'] = $uuid;
+
+        $request = $this->privateRequestManager->createGetRequest('/market/cancel');
+
+        return $this->get($request);
+    }
+
+
+    /**
+     * @param string $market
+     * @return mixed
+     */
+    public function getOpenOrders(string $market = 'BTC-LTC')
+    {
+        $parameters['market'] = $market;
+
+        $request = $this->privateRequestManager->createGetRequest('/market/getopenorders');
+
+        return $this->get($request);
+    }
+
+    /*
      ***************************  Account API  **************************
      */
 
