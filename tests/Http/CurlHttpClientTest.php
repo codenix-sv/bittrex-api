@@ -36,4 +36,25 @@ final class CurlHttpClientTest extends TestCase
         $this->assertArrayHasKey('form', $resultArray);
         $this->assertEquals($value, $resultArray['form']['test']);
     }
+
+    /**
+     * @throws \codenixsv\Bittrex\Exceptions\CurlException
+     */
+    public function testPostWithHeaders()
+    {
+        $value = 'testvalue';
+        $client = new CurlHttpClient();
+
+        $headerValue = 'test-header-value';
+        $headers = ['Test-Header: ' . $headerValue];
+
+        $response = $client->post('https://httpbin.org/post', ['test' => $value], $headers);
+
+        $resultArray = json_decode($response, true);
+        $this->assertArrayHasKey('form', $resultArray);
+        $this->assertEquals($value, $resultArray['form']['test']);
+
+        $this->assertArrayHasKey('headers', $resultArray);
+        $this->assertEquals($headerValue, $resultArray['headers']['Test-Header']);
+    }
 }

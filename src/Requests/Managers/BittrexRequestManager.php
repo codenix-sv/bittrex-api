@@ -8,6 +8,7 @@
 namespace codenixsv\Bittrex\Requests\Managers;
 
 use codenixsv\Bittrex\Requests\Request;
+use codenixsv\Bittrex\Helpers\CommonHelper;
 
 /**
  * Class BittrexRequestManager
@@ -49,5 +50,14 @@ abstract class BittrexRequestManager implements RequestManager
     public function getVersion(): string
     {
         return static::API_VERSION;
+    }
+
+    /**
+     * @param array $headers
+     * @return array
+     */
+    protected function generateHttpHeaders(array $headers): array
+    {
+        return CommonHelper::arrayToHttpHeaders($headers);
     }
 }
