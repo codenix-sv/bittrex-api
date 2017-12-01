@@ -20,7 +20,7 @@ class CommonHelper
     public static function arrayToHttpHeaders(array $headers)
     {
         $httpHeaders = [];
-        if (self::isAssociative($headers)) {
+        if (!self::isArrayAssociative($headers)) {
             throw new \InvalidArgumentException('Array must be associative');
         }
 
@@ -35,7 +35,7 @@ class CommonHelper
      * @param $array
      * @return bool
      */
-    public static function isAssociative($array)
+    public static function isArrayAssociative($array)
     {
         $array = array_keys($array);
         return ($array !== array_keys($array));

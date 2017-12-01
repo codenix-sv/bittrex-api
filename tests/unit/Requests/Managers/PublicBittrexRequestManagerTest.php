@@ -1,11 +1,15 @@
 <?php
 
-namespace codenixsv\Bittrex\tests\Requests\Managers;
+namespace codenixsv\Bittrex\tests\unit\Requests\Managers;
 
 use codenixsv\Bittrex\Requests\Managers\PublicBittrexRequestManager;
 use PHPUnit\Framework\TestCase;
 use codenixsv\Bittrex\Requests\Request;
 
+/**
+ * Class PublicBittrexRequestManagerTest
+ * @package codenixsv\Bittrex\tests\unit\Requests\Managers
+ */
 final class PublicBittrexRequestManagerTest extends TestCase
 {
     public function testGetVersion()
@@ -35,10 +39,14 @@ final class PublicBittrexRequestManagerTest extends TestCase
 
         $expectedUrl = 'https://bittrex.com/api/v1.1/manage/test?user=name&pass=1234';
 
+        $outputHeaders = $request->getHeaders();
+
         $this->assertInstanceOf(Request::class, $request);
         $this->assertEquals($expectedUrl, $request->getUrl());
         $this->assertEquals($parameters, $request->getParameters());
-        $this->assertEquals($headers, $request->getHeaders());
+
+        $this->assertEquals('sign: qwerty', $outputHeaders[0]);
+        $this->assertEquals('login: test', $outputHeaders[1]);
     }
 
     public function testCreatePostRequest()
@@ -56,6 +64,10 @@ final class PublicBittrexRequestManagerTest extends TestCase
         $this->assertInstanceOf(Request::class, $request);
         $this->assertEquals($expectedUrl, $request->getUrl());
         $this->assertEquals($parameters, $request->getParameters());
-        $this->assertEquals($headers, $request->getHeaders());
+
+        $outputHeaders = $request->getHeaders();
+
+        $this->assertEquals('sign: qwerty', $outputHeaders[0]);
+        $this->assertEquals('login: test', $outputHeaders[1]);
     }
 }

@@ -26,7 +26,9 @@ class PublicBittrexRequestManager extends BittrexRequestManager
     {
         $url = $this->generateUrlForGetRequest($path, $parameters);
 
-        return new BittrexRequest($url, $headers, $parameters);
+        $httpHeaders = $this->generateHttpHeaders($headers);
+
+        return new BittrexRequest($url, $httpHeaders, $parameters);
     }
 
     /**
@@ -39,7 +41,9 @@ class PublicBittrexRequestManager extends BittrexRequestManager
     {
         $url = $this->generateUrlForPostRequest($path);
 
-        return new BittrexRequest($url, $headers, $parameters);
+        $httpHeaders = $this->generateHttpHeaders($headers);
+
+        return new BittrexRequest($url, $httpHeaders, $parameters);
     }
 
     /**

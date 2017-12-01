@@ -1,10 +1,14 @@
 <?php
 
-namespace codenixsv\Bittrex\tests\Requests;
+namespace codenixsv\Bittrex\tests\unit\Requests;
 
 use PHPUnit\Framework\TestCase;
 use codenixsv\Bittrex\Requests\BittrexRequest;
 
+/**
+ * Class BittrexRequestTest
+ * @package codenixsv\Bittrex\tests\unit\Requests
+ */
 final class BittrexRequestTest extends TestCase
 {
     public function testGetUrl()

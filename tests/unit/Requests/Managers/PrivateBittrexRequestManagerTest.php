@@ -1,11 +1,15 @@
 <?php
 
-namespace codenixsv\Bittrex\tests\Requests\Managers;
+namespace codenixsv\Bittrex\tests\unit\Requests\Managers;
 
 use codenixsv\Bittrex\Requests\Managers\PrivateBittrexRequestManager;
 use PHPUnit\Framework\TestCase;
 use codenixsv\Bittrex\Requests\Request;
 
+/**
+ * Class PrivateBittrexRequestManagerTest
+ * @package codenixsv\Bittrex\tests\unit\Requests\Managers
+ */
 final class PrivateBittrexRequestManagerTest extends TestCase
 {
     public function testGetVersion()
@@ -38,10 +42,15 @@ final class PrivateBittrexRequestManagerTest extends TestCase
         $expectedParameters = $parameters;
         $expectedParameters['apikey'] = 'jsdj84nc84slm09u32nnc';
 
+        $outputHeaders = $request->getHeaders();
+
         $this->assertInstanceOf(Request::class, $request);
         $this->assertContains($expectedPartUrl, $request->getUrl());
         $this->assertEquals($expectedParameters, $request->getParameters());
-        $this->assertArrayHasKey('apisign', $request->getHeaders());
+
+        $this->assertEquals('sign: qwerty', $outputHeaders[0]);
+        $this->assertEquals('login: test', $outputHeaders[1]);
+        $this->assertContains('apisign:', $outputHeaders[2]);
     }
 
     public function testCreatePostRequest()
@@ -53,6 +62,12 @@ final class PrivateBittrexRequestManagerTest extends TestCase
         $manager = new PrivateBittrexRequestManager('jsdj84nc84slm09u32nnc', 'kdmciou3489hieuh78ergycn7erh');
         $request = $manager->createPostRequest($path, $parameters, $headers);
 
+        $outputHeaders = $request->getHeaders();
+
         $this->assertInstanceOf(Request::class, $request);
+
+        $this->assertEquals('sign: qwerty', $outputHeaders[0]);
+        $this->assertEquals('login: test', $outputHeaders[1]);
+        $this->assertContains('apisign:', $outputHeaders[2]);
     }
 }
