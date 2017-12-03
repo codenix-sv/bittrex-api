@@ -274,12 +274,14 @@ class BittrexClient extends Client
 
      * @return mixed
      */
-    public function withdraw(string $currency, float $quantity, string $address, string $paymentid)
+    public function withdraw(string $currency, float $quantity, string $address, string $paymentid = null)
     {
         $parameters['currency'] = $currency;
         $parameters['quantity'] = (string)$quantity;
         $parameters['address'] = $address;
-        $parameters['paymentid'] = $paymentid;
+        if (!is_null($paymentid)) {
+            $parameters['paymentid'] = $paymentid;
+        }
 
         $request = $this->privateRequestManager->createGetRequest('/account/withdraw');
 
