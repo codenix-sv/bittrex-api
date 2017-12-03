@@ -19,6 +19,10 @@ class CommonHelper
      */
     public static function arrayToHttpHeaders(array $headers)
     {
+        if (empty($headers)) {
+            return [];
+        }
+
         $httpHeaders = [];
         if (!self::isArrayAssociative($headers)) {
             throw new \InvalidArgumentException('Array must be associative');
