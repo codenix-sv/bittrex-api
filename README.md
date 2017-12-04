@@ -14,12 +14,12 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```bash
-$ composer require codenix-sv/bittrex-api:~1.0
+$ composer require codenix-sv/bittrex-api:~0.1
 ```
 or add
 
 ```json
-"codenix-sv/bittrex-api" : "~1.0"
+"codenix-sv/bittrex-api" : "~0.1"
 ```
 
 to the require section of your application's `composer.json` file.
