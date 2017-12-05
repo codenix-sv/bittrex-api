@@ -67,6 +67,23 @@ $responce = $client->getOrderBook('BTC-LTC');
 ```php
 $responce = $client->getMarketHistory('BTC-LTC');
 ```
+#### Market API
+##### Place a buy order in a specific market
+```php
+$responce = $client->buyLimit('BTC-LTC', 1.2, 1.3);
+```
+##### Place a sell order in a specific market
+```php
+$responce = $client->sellLimit('BTC-LTC', 1.2, 1.3);
+```
+##### Cancel a buy or sell order
+```php
+$responce = $client->cancel('251c48e7-95d4-d53f-ad76-a7c6547b74ca9');
+```
+##### Get all orders that you currently have opened
+```php
+$responce = $client->getOpenOrders('BTC-LTC');
+```
 
 ## Further Information
 Please, check the [Bittrex site](https://bittrex.com/Home/Api) documentation for further
