@@ -4,8 +4,8 @@
 [![Latest Unstable Version](https://poser.pugx.org/codenix-sv/bittrex-api/v/unstable)](https://packagist.org/packages/codenix-sv/bittrex-api)
 [![License](https://poser.pugx.org/codenix-sv/bittrex-api/license)](https://packagist.org/packages/codenix-sv/bittrex-api)
 [![Build Status](https://travis-ci.org/codenix-sv/bittrex-api.svg?branch=master)](https://travis-ci.org/codenix-sv/bittrex-api)
-[![Maintainability](https://api.codeclimate.com/v1/badges/49b696439195269120b4/maintainability)](https://codeclimate.com/github/codenix-sv/bittrex-api/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/49b696439195269120b4/test_coverage)](https://codeclimate.com/github/codenix-sv/bittrex-api/test_coverage)
+<a href="https://codeclimate.com/github/codenix-sv/bittrex-api/maintainability"><img src="https://api.codeclimate.com/v1/badges/49b696439195269120b4/maintainability" /></a>
+<a href="https://codeclimate.com/github/codenix-sv/bittrex-api/test_coverage"><img src="https://api.codeclimate.com/v1/badges/49b696439195269120b4/test_coverage" /></a>
 
 A simple PHP wrapper for [Bittrex API](https://bittrex.com/Home/Api). Bittrex is the next generation crypto trading platform.
 
