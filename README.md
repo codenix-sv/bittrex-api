@@ -67,7 +67,9 @@ $responce = $client->getOrderBook('BTC-LTC');
 ```php
 $responce = $client->getMarketHistory('BTC-LTC');
 ```
+
 #### Market API
+
 ##### Place a buy order in a specific market
 ```php
 $responce = $client->buyLimit('BTC-LTC', 1.2, 1.3);
@@ -83,6 +85,41 @@ $responce = $client->cancel('251c48e7-95d4-d53f-ad76-a7c6547b74ca9');
 ##### Get all orders that you currently have opened
 ```php
 $responce = $client->getOpenOrders('BTC-LTC');
+```
+
+#### Account API
+
+##### Get all balances from your account
+```php
+$responce = $client->getBalances();
+```
+##### Get balance from your account for a specific currency
+```php
+$responce = $client->getBalance('BTC');
+```
+##### Get or generate an address for a specific currency
+```php
+$responce = $client->getDepositAddress('BTC');
+```
+##### Withdraw funds from your account
+```php
+$responce = $client->withdraw('BTC', 20.40, 'EAC_ADDRESS');
+```
+##### Get a single order by uuid
+```php
+$responce = $client->getOrder('251c48e7-95d4-d53f-ad76-a7c6547b74ca9');
+```
+##### Get order history
+```php
+$responce = $client->getOrderHistory('BTC-LTC');
+```
+##### Get withdrawal history
+```php
+$responce = $client->getWithdrawalHistory('BTC');
+```
+##### Get deposit history
+```php
+$responce = $client->getDepositHistory('BTC');
 ```
 
 ## Further Information
