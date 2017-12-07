@@ -162,7 +162,7 @@ class BittrexClient extends Client
         $parameters['quantity'] = (string)$quantity;
         $parameters['rate'] = (string)$rate;
 
-        $request = $this->privateRequestManager->createGetRequest('/market/buylimit');
+        $request = $this->privateRequestManager->createGetRequest('/market/buylimit', $parameters);
 
         return $this->get($request);
     }
@@ -181,7 +181,7 @@ class BittrexClient extends Client
         $parameters['quantity'] = (string)$quantity;
         $parameters['rate'] = (string)$rate;
 
-        $request = $this->privateRequestManager->createGetRequest('/market/selllimit');
+        $request = $this->privateRequestManager->createGetRequest('/market/selllimit', $parameters);
 
         return $this->get($request);
     }
@@ -197,7 +197,7 @@ class BittrexClient extends Client
     {
         $parameters['uuid'] = $uuid;
 
-        $request = $this->privateRequestManager->createGetRequest('/market/cancel');
+        $request = $this->privateRequestManager->createGetRequest('/market/cancel', $parameters);
 
         return $this->get($request);
     }
@@ -209,11 +209,15 @@ class BittrexClient extends Client
      * @param string $market string literal for the market (e.g.: BTC-LTC)
      * @return mixed
      */
-    public function getOpenOrders(string $market)
+    public function getOpenOrders(string $market = null)
     {
-        $parameters['market'] = $market;
+        $parameters = [];
 
-        $request = $this->privateRequestManager->createGetRequest('/market/getopenorders');
+        if (!is_null($market)) {
+            $parameters['market'] = $market;
+        }
+
+        $request = $this->privateRequestManager->createGetRequest('/market/getopenorders', $parameters);
 
         return $this->get($request);
     }
@@ -244,7 +248,7 @@ class BittrexClient extends Client
     {
         $parameters['currency'] = $currency;
 
-        $request = $this->privateRequestManager->createGetRequest('/account/getbalance');
+        $request = $this->privateRequestManager->createGetRequest('/account/getbalance', $parameters);
 
         return $this->get($request);
     }
@@ -259,7 +263,7 @@ class BittrexClient extends Client
     {
         $parameters['currency'] = $currency;
 
-        $request = $this->privateRequestManager->createGetRequest('/account/getdepositaddress');
+        $request = $this->privateRequestManager->createGetRequest('/account/getdepositaddress', $parameters);
 
         return $this->get($request);
     }
@@ -279,11 +283,12 @@ class BittrexClient extends Client
         $parameters['currency'] = $currency;
         $parameters['quantity'] = (string)$quantity;
         $parameters['address'] = $address;
+
         if (!is_null($paymentid)) {
             $parameters['paymentid'] = $paymentid;
         }
 
-        $request = $this->privateRequestManager->createGetRequest('/account/withdraw');
+        $request = $this->privateRequestManager->createGetRequest('/account/withdraw', $parameters);
 
         return $this->get($request);
     }
@@ -298,7 +303,7 @@ class BittrexClient extends Client
     {
         $parameters['uuid'] = $uuid;
 
-        $request = $this->privateRequestManager->createGetRequest('/account/getorder');
+        $request = $this->privateRequestManager->createGetRequest('/account/getorder', $parameters);
 
         return $this->get($request);
     }
@@ -309,11 +314,15 @@ class BittrexClient extends Client
      * @param string $market string literal for the market (e.g.: BTC-LTC)
      * @return mixed
      */
-    public function getOrderHistory(string $market)
+    public function getOrderHistory(string $market = null)
     {
-        $parameters['market'] = $market;
+        $parameters = [];
 
-        $request = $this->privateRequestManager->createGetRequest('/account/getorderhistory');
+        if (!is_null($market)) {
+            $parameters['market'] = $market;
+        }
+
+        $request = $this->privateRequestManager->createGetRequest('/account/getorderhistory', $parameters);
 
         return $this->get($request);
     }
@@ -324,11 +333,15 @@ class BittrexClient extends Client
      * @param string $currency string literal for the currency (e.g.: BTC)
      * @return mixed
      */
-    public function getWithdrawalHistory(string $currency)
+    public function getWithdrawalHistory(string $currency = null)
     {
-        $parameters['currency'] = $currency;
+        $parameters = [];
 
-        $request = $this->privateRequestManager->createGetRequest('/account/getwithdrawalhistory');
+        if (!is_null($currency)) {
+            $parameters['currency'] = $currency;
+        }
+
+        $request = $this->privateRequestManager->createGetRequest('/account/getwithdrawalhistory', $parameters);
 
         return $this->get($request);
     }
@@ -339,11 +352,15 @@ class BittrexClient extends Client
      * @param string $currency string literal for the currency (e.g.: BTC)
      * @return mixed
      */
-    public function getDepositHistory(string $currency)
+    public function getDepositHistory(string $currency = null)
     {
-        $parameters['currency'] = $currency;
+        $parameters = [];
 
-        $request = $this->privateRequestManager->createGetRequest('/account/getdeposithistory');
+        if (!is_null($currency)) {
+            $parameters['currency'] = $currency;
+        }
+
+        $request = $this->privateRequestManager->createGetRequest('/account/getdeposithistory', $parameters);
 
         return $this->get($request);
     }
