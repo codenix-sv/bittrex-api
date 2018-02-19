@@ -5,9 +5,9 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/?branch=master)
 
-[![Latest Stable Version](https://poser.pugx.org/codenix-sv/bittrex-api/v/stable)](https://packagist.org/packages/codenix-sv/bittrex-api)
-[![Latest Unstable Version](https://poser.pugx.org/codenix-sv/bittrex-api/v/unstable)](https://packagist.org/packages/codenix-sv/bittrex-api)
-[![License](https://poser.pugx.org/codenix-sv/bittrex-api/license)](https://packagist.org/packages/codenix-sv/bittrex-api)
+[![License](https://img.shields.io/packagist/l/codenix-sv/bittrex-api.svg)](https://packagist.org/packages/codenix-sv/yii2-flatpickr)
+[![Latest Stable Version](https://img.shields.io/packagist/v/codenix-sv/bittrex-api.svg)](https://packagist.org/packages/codenix-sv/yii2-flatpickr)
+[![GitHub last commit](https://img.shields.io/github/last-commit/codenix-sv/bittrex-api.svg)](https://github.com/codenix-sv/yii2-flatpickr/commits)
 
 A simple PHP wrapper for [Bittrex API](https://bittrex.com/Home/Api). Bittrex is the next generation crypto trading platform.
 
