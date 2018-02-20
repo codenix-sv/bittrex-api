@@ -80,6 +80,7 @@ class BittrexClient extends Client
      */
     public function getTicker(string $market)
     {
+        $parameters = [];
         $parameters['market'] = $market;
 
         $request = $this->publicRequestManager->createGetRequest('/public/getticker', $parameters);
@@ -107,6 +108,7 @@ class BittrexClient extends Client
      */
     public function getMarketSummary(string $market)
     {
+        $parameters = [];
         $parameters['market'] = $market;
         $request = $this->publicRequestManager->createGetRequest('/public/getmarketsummary', $parameters);
 
@@ -122,6 +124,7 @@ class BittrexClient extends Client
      */
     public function getOrderBook(string $market, $type = 'both')
     {
+        $parameters = [];
         $parameters['market'] = $market;
         $parameters['type'] = $type;
 
@@ -138,6 +141,7 @@ class BittrexClient extends Client
      */
     public function getMarketHistory(string $market)
     {
+        $parameters = [];
         $parameters['market'] = $market;
 
         $request = $this->publicRequestManager->createGetRequest('/public/getmarkethistory', $parameters);
@@ -159,6 +163,7 @@ class BittrexClient extends Client
      */
     public function buyLimit(string $market, float $quantity, float $rate)
     {
+        $parameters = [];
         $parameters['market'] = $market;
         $parameters['quantity'] = (string)$quantity;
         $parameters['rate'] = (string)$rate;
@@ -178,6 +183,7 @@ class BittrexClient extends Client
      */
     public function sellLimit(string $market, float $quantity, float $rate)
     {
+        $parameters = [];
         $parameters['market'] = $market;
         $parameters['quantity'] = (string)$quantity;
         $parameters['rate'] = (string)$rate;
@@ -196,6 +202,7 @@ class BittrexClient extends Client
      */
     public function cancel(string $uuid)
     {
+        $parameters = [];
         $parameters['uuid'] = $uuid;
 
         $request = $this->privateRequestManager->createGetRequest('/market/cancel', $parameters);
@@ -247,6 +254,7 @@ class BittrexClient extends Client
      */
     public function getBalance(string $currency)
     {
+        $parameters = [];
         $parameters['currency'] = $currency;
 
         $request = $this->privateRequestManager->createGetRequest('/account/getbalance', $parameters);
@@ -262,6 +270,7 @@ class BittrexClient extends Client
      */
     public function getDepositAddress(string $currency)
     {
+        $parameters = [];
         $parameters['currency'] = $currency;
 
         $request = $this->privateRequestManager->createGetRequest('/account/getdepositaddress', $parameters);
@@ -281,6 +290,7 @@ class BittrexClient extends Client
      */
     public function withdraw(string $currency, float $quantity, string $address, string $paymentid = null)
     {
+        $parameters = [];
         $parameters['currency'] = $currency;
         $parameters['quantity'] = (string)$quantity;
         $parameters['address'] = $address;
@@ -302,6 +312,7 @@ class BittrexClient extends Client
      */
     public function getOrder(string $uuid)
     {
+        $parameters = [];
         $parameters['uuid'] = $uuid;
 
         $request = $this->privateRequestManager->createGetRequest('/account/getorder', $parameters);
