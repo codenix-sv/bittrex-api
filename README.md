@@ -4,6 +4,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/49b696439195269120b4/test_coverage)](https://codeclimate.com/github/codenix-sv/bittrex-api/test_coverage)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/?branch=master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
 [![License](https://poser.pugx.org/codenix-sv/bittrex-api/license)](https://packagist.org/packages/codenix-sv/bittrex-api)
 [![Latest Stable Version](https://poser.pugx.org/codenix-sv/bittrex-api/v/stable)](https://packagist.org/packages/codenix-sv/bittrex-api)
