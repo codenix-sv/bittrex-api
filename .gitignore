@@ -1,5 +1,5 @@
 vendor
 composer.lock
-.idea
 build
 phpunit.xml
+.phpunit.result.cache

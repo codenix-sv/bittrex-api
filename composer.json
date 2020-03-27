@@ -1,39 +1,35 @@
 {
     "name": "codenix-sv/bittrex-api",
-    "description": "PHP client for the Bittrex API",
-    "keywords": [
-            "bittrex",
-            "bitcoin",
-            "btc",
-            "bittrex-api"
-        ],
     "type": "library",
-    "license": "BSD-3-Clause",
+    "description": "PHP client for Bittrex API",
+    "homepage": "https://github.com/codenix-sv/bittrex-api",
+    "keywords": ["client", "api", "php", "bittrex", "rest", "bittrex-api", "exchange"],
+    "license": "MIT",
     "support": {
-            "issues": "https://github.com/codenix-sv/bittrex-api/issues?state=open",
-            "source": "https://github.com/codenix-sv/bittrex-api"
-        },
+        "issues": "https://github.com/codenix-sv/bittrex-api/issues?state=open",
+        "source": "https://github.com/codenix-sv/bittrex-api"
+    },
     "authors": [
         {
-            "name": "Vladymyr Svyryd",
+            "name": "Volodymyr Svyryd",
             "email": "codenix.sv@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=7.1"
+        "php": "^7.2",
+        "ext-json": "*"
+
     },
     "require-dev": {
-        "phpunit/phpunit": "~6.0"
+        "phpunit/phpunit": "^8.0",
+        "guzzlehttp/guzzle": "~6.0"
     },
     "autoload": {
-        "psr-4": {
-            "codenixsv\\Bittrex\\": "src/"
-        }
+        "psr-4": { "Codenixsv\\BittrexApi\\": "src/" }
     },
     "autoload-dev": {
-        "psr-4": {
-            "codenixsv\\Bittrex\\": "tests/"
-        }
-    }
+        "psr-4": { "Codenixsv\\BittrexApi\\Tests\\": "tests/"}
+    },
+    "prefer-stable": true
 }

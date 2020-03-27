@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.2/phpunit.xsd"
          backupGlobals="false"
          backupStaticAttributes="false"
          colors="true"
-         verbose="true"
+         bootstrap="vendor/autoload.php"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Bittrex API Unit Test Suite">
-            <directory>./tests/unit</directory>
-        </testsuite>
-        <testsuite name="Bittrex API Functional Test Suite">
-            <directory>./tests/functional</directory>
+        <testsuite name="tests">
+            <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
     <filter>
-        <whitelist>
-            <directory suffix=".php">./src/</directory>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
         </whitelist>
     </filter>
     <logging>
-        <log type="coverage-html" target="build/coverage" charset="UTF-8" yui="true" highlight="true"/>
+        <log type="coverage-html" target="build/coverage"/>
         <log type="coverage-text" target="build/coverage.txt"/>
         <log type="coverage-clover" target="build/logs/clover.xml"/>
     </logging>

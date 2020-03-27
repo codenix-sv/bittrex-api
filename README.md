@@ -1,20 +1,18 @@
 # bittrex-api
-[![Build Status](https://travis-ci.org/codenix-sv/bittrex-api.svg?branch=master)](https://travis-ci.org/codenix-sv/bittrex-api)
-[![Maintainability](https://api.codeclimate.com/v1/badges/49b696439195269120b4/maintainability)](https://codeclimate.com/github/codenix-sv/bittrex-api/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/49b696439195269120b4/test_coverage)](https://codeclimate.com/github/codenix-sv/bittrex-api/test_coverage)
+[![Build Status](https://travis-ci.com/codenix-sv/bittrex-api.svg?branch=master)](https://travis-ci.com/codenix-sv/bittrex-api)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/?branch=master)
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/49b696439195269120b4/test_coverage)](https://codeclimate.com/github/codenix-sv/bittrex-api/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/49b696439195269120b4/maintainability)](https://codeclimate.com/github/codenix-sv/bittrex-api/maintainability)
+[![License: MIT](https://img.shields.io/github/license/codenix-sv/bittrex-api)](https://github.com/codenix-sv/bittrex-api/blob/master/LICENSE)
+![Packagist](https://img.shields.io/packagist/dt/codenix-sv/bittrex-api)
 
-[![License](https://poser.pugx.org/codenix-sv/bittrex-api/license)](https://packagist.org/packages/codenix-sv/bittrex-api)
-[![Latest Stable Version](https://poser.pugx.org/codenix-sv/bittrex-api/v/stable)](https://packagist.org/packages/codenix-sv/bittrex-api)
-
-A simple PHP wrapper for [Bittrex API](https://bittrex.com/Home/Api). Bittrex is the next generation crypto trading platform.
+A simple PHP wrapper for [Bittrex API](https://bittrex.github.io/api/v1-1). Bittrex is the next generation crypto trading platform.
 
 ## Requirements
 
-- PHP >= 7.1
-- [Bittrex account](https://bittrex.com), API key and API secret
+* PHP >= 7.2
+* ext-json
+* [Bittrex account](https://global.bittrex.com/), API key and API secret
 
 ## Installation
 
@@ -23,12 +21,12 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```bash
-$ composer require codenix-sv/bittrex-api:~0.2
+$ composer require codenix-sv/bittrex-api
 ```
 or add
 
 ```json
-"codenix-sv/bittrex-api" : "~0.2"
+"codenix-sv/bittrex-api" : "^1.0"
 ```
 
 to the require section of your application's `composer.json` file.
@@ -37,104 +35,119 @@ to the require section of your application's `composer.json` file.
 
 ### Example
 ```php
-use codenixsv\Bittrex\BittrexManager;
+use Codenixsv\BittrexApi\BittrexClient;
 
-$manager = new BittrexManager('API_KEY', 'API_SECRET');
-$client = $manager->createClient();
+$client = new BittrexClient();
+$client->setCredential('API_KEY', 'API_SECRET');
 
-$responce = $client->getBalances();
+$data = $client->public()->getMarkets();
 ```
-### Available methods
+## Available methods
 
-#### Public API
+### Public API
 
-##### Get the open and available trading markets
+#### Get the open and available trading markets
 ```php
-$responce = $client->getMarkets();
-```
-##### Get all supported currencies
-```php
-$responce = $client->getCurrencies();
-```
-##### Get the current tick values for a market
-```php
-$responce = $client->getTicker('BTC-LTC');
-```
-##### Get the last 24 hour summary of all active exchanges
-```php
-$responce = $client->getMarketSummaries();
-```
-##### Get the last 24 hour summary of all active exchanges for a market
-```php
-$responce = $client->getMarketSummary('BTC-LTC');
-```
-##### Get the orderbook for a given market
-```php
-$responce = $client->getOrderBook('BTC-LTC');
-```
-##### Get latest trades that have occurred for a specific market
-```php
-$responce = $client->getMarketHistory('BTC-LTC');
+$data = $client->public()->getMarkets();
 ```
 
-#### Market API
-
-##### Place a buy order in a specific market
+#### Get all supported currencies
 ```php
-$responce = $client->buyLimit('BTC-LTC', 1.2, 1.3);
-```
-##### Place a sell order in a specific market
-```php
-$responce = $client->sellLimit('BTC-LTC', 1.2, 1.3);
-```
-##### Cancel a buy or sell order
-```php
-$responce = $client->cancel('251c48e7-95d4-d53f-ad76-a7c6547b74ca9');
-```
-##### Get all orders that you currently have opened
-```php
-$responce = $client->getOpenOrders('BTC-LTC');
+$data = $client->public()->getCurrencies();
 ```
 
-#### Account API
+#### Get the current tick values for a market
+```php
+$data = $client->public()->getTicker('BTC-LTC');
+```
+#### Get the last 24 hour summary of all active exchanges
+```php
+$data = $client->public()->getMarketSummaries();
+```
 
-##### Get all balances from your account
+#### Get the last 24 hour summary of all active exchanges for a market
 ```php
-$responce = $client->getBalances();
+$data = $client->public()->getMarketSummary('BTC-LTC');
 ```
-##### Get balance from your account for a specific currency
+
+#### Get the orderbook for a given market
 ```php
-$responce = $client->getBalance('BTC');
+$data = $client->public()->getOrderBook('BTC-LTC');
 ```
-##### Get or generate an address for a specific currency
+
+#### Get latest trades that have occurred for a specific market
 ```php
-$responce = $client->getDepositAddress('BTC');
+$data = $client->public()->getMarketHistory('BTC-LTC');
 ```
-##### Withdraw funds from your account
+
+### Market API
+
+#### Place a buy order in a specific market
 ```php
-$responce = $client->withdraw('BTC', 20.40, 'EAC_ADDRESS');
+$data = $client->market()->buyLimit('BTC-LTC', 1.2, 1.3);
 ```
-##### Get a single order by uuid
+
+#### Place a sell order in a specific market
 ```php
-$responce = $client->getOrder('251c48e7-95d4-d53f-ad76-a7c6547b74ca9');
+$data = $client->market()->sellLimit('BTC-LTC', 1.2, 1.3);
 ```
-##### Get order history
+
+#### Cancel a buy or sell order
 ```php
-$responce = $client->getOrderHistory('BTC-LTC');
+$data = $client->market()->cancel('251c48e7-95d4-d53f-ad76-a7c6547b74ca9');
 ```
-##### Get withdrawal history
+
+#### Get all orders that you currently have opened
 ```php
-$responce = $client->getWithdrawalHistory('BTC');
+$data = $client->market()->getOpenOrders('BTC-LTC');
 ```
-##### Get deposit history
+
+### Account API
+
+#### Get all balances from your account
 ```php
-$responce = $client->getDepositHistory('BTC');
+$data = $client->account()->getBalances();
+```
+
+#### Get balance from your account for a specific currency
+```php
+$data = $client->account()->getBalance('BTC');
+```
+
+#### Get or generate an address for a specific currency
+```php
+$data = $client->account()->getDepositAddress('BTC');
+```
+
+#### Withdraw funds from your account
+```php
+$data = $client->account()->withdraw('BTC', 20.40, 'EAC_ADDRESS');
+```
+
+#### Get a single order by uuid
+```php
+$data = $client->account()->getOrder('251c48e7-95d4-d53f-ad76-a7c6547b74ca9');
+```
+
+#### Get order history
+```php
+$data = $client->account()->getOrderHistory('BTC-LTC');
+```
+
+#### Get withdrawal history
+```php
+$data = $client->account()->getWithdrawalHistory('BTC');
+```
+
+#### Get deposit history
+```php
+$data = $client->account()->getDepositHistory('BTC');
 ```
 
 ## Further Information
-Please, check the [Bittrex site](https://bittrex.com/Home/Api) documentation for further
+Please, check the [Bittrex site](https://bittrex.github.io/api/v1-1) documentation for further
 information about API.
 
 ## License
 
-**bittrex-api** is released under the BSD 3-Clause License. See the bundled [LICENSE](./LICENSE) for details.
+`codenix-sv/bittrex-api` is released under the MIT License. See the bundled [LICENSE](./LICENSE) for details.
