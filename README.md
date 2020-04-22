@@ -3,7 +3,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/?branch=master)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/49b696439195269120b4/test_coverage)](https://codeclimate.com/github/codenix-sv/bittrex-api/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/49b696439195269120b4/maintainability)](https://codeclimate.com/github/codenix-sv/bittrex-api/maintainability)
-[![License: MIT](https://img.shields.io/github/license/codenix-sv/bittrex-api)](https://github.com/codenix-sv/bittrex-api/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/codenix-sv/bittrex-api/blob/master/LICENSE)
 ![Packagist](https://img.shields.io/packagist/dt/codenix-sv/bittrex-api)
 
 A simple PHP wrapper for [Bittrex API](https://bittrex.github.io/api/v1-1). Bittrex is the next generation crypto trading platform.
