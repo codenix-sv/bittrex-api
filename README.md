@@ -1,3 +1,8 @@
+# This repository is no longer active.
+⛔ No new issues ⛔ No pull requests ⛔ No maintenance
+
+Source code is kept only for reference purposes.
+
 # bittrex-api
 [![Build Status](https://travis-ci.com/codenix-sv/bittrex-api.svg?branch=master)](https://travis-ci.com/codenix-sv/bittrex-api)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/codenix-sv/bittrex-api/?branch=master)
